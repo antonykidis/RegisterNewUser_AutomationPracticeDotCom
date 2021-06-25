@@ -3,7 +3,7 @@ using System;
 
 namespace UnitTestProject
 {
-    public class MyAccount : BaseClass.BaseClass
+    public class MyAccountPage : BaseClass.BaseClass
     {
         private IWebDriver _Driver;
         private IWebElement LogOffButton => WaitFindElement(this._Driver, By.CssSelector(".header_user_info>.logout"), 2);
@@ -12,19 +12,17 @@ namespace UnitTestProject
 
 
 
-        public MyAccount(IWebDriver driver)
+        public MyAccountPage(IWebDriver driver)
         {
             this._Driver = driver;
         }
 
-
-
-        public MyAccountLoggedOff LogOff_ToAccLoggedOff()
+        public MyAccountLoggedOffPage LogOff_ToAccLoggedOff()
         {
 
             LogOffButton.Click();
 
-            return new MyAccountLoggedOff(_Driver);
+            return new MyAccountLoggedOffPage(_Driver);
         }
 
        

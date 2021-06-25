@@ -59,10 +59,10 @@
   <ItemGroup>
     <Compile Include="BaseClass\BaseClass.cs" />
     <Compile Include="Pages\CreateAccountPage.cs" />
-    <Compile Include="Pages\MyAccLoggedOff.cs" />
+    <Compile Include="Pages\MyAccLoggedOffPage.cs" />
     <Compile Include="Pages\HomePage.cs" />
     <Compile Include="Pages\AuthenticationPage.cs" />
-    <Compile Include="Pages\MyAccount.cs" />
+    <Compile Include="Pages\MyAccountPage.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

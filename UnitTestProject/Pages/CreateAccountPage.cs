@@ -115,7 +115,7 @@ namespace UnitTestProject
         }
 
 
-        internal MyAccount RegisterNewUser_And_GoToMyAccountPage(string firstname, string lastname,string email, string password, string birhday_day,string birthday_month,string birthday_year, string company,string address, string city, string state, string additional_info, string mobilePhone)
+        internal MyAccountPage RegisterNewUser_And_GoToMyAccountPage(string firstname, string lastname,string email, string password, string birhday_day,string birthday_month,string birthday_year, string company,string address, string city, string state, string additional_info, string mobilePhone)
         {
 
             int index = 0;
@@ -185,11 +185,8 @@ namespace UnitTestProject
             Address_AddressAlias_TextBox.SendKeys(firstname+" "+lastname);
             Address_Submit_Button.Click();
 
-            return new MyAccount(_Driver);
+            return new MyAccountPage(_Driver);
         }
     }
-
-
-
 
 }

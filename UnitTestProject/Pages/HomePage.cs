@@ -12,7 +12,7 @@ namespace UnitTestProject
 
 
 
-        public HomePage(IWebDriver driver)
+        public HomePage(IWebDriver driver) //will get the initialized driver from the base class
         {
             this._Driver = driver;
         }
@@ -23,12 +23,12 @@ namespace UnitTestProject
             return new AuthenticationPage(_Driver);
         }
 
-        internal MyAccount Login_WithExistingUser(string email, string password)
+        internal MyAccountPage Login_WithExistingUser(string email, string password)
         {
             EmailTextBox.SendKeys(email);
             PasswordTextBox.SendKeys(password);
             LoginButton.Click();
-            return new MyAccount(_Driver);
+            return new MyAccountPage(_Driver);
         }
     }
 }

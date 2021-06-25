@@ -45,8 +45,8 @@ namespace UnitTestProject
                 _email_fromConfig = rnd.Next(1,10000).ToString()+_email_fromConfig;
                 //3.Start again with new Email :-)
                 CreateAccountPage CreateAccPage = AuthPage.Login_ToCreateAnAccountPage2(_email_fromConfig);
-                MyAccount MyAccPage = CreateAccPage.RegisterNewUser_And_GoToMyAccountPage(_FirstName, _Lastname, _email_fromConfig, _Password, _Day, _Month, _Year, _Company, _Address, _City, _State, _AddInfo, _MobilePhone); //provide your Unregisterd user
-                MyAccountLoggedOff MyAccloggedOff = MyAccPage.LogOff_ToAccLoggedOff();
+                MyAccountPage MyAccPage = CreateAccPage.RegisterNewUser_And_GoToMyAccountPage(_FirstName, _Lastname, _email_fromConfig, _Password, _Day, _Month, _Year, _Company, _Address, _City, _State, _AddInfo, _MobilePhone); //provide your Unregisterd user
+                MyAccountLoggedOffPage MyAccloggedOff = MyAccPage.LogOff_ToAccLoggedOff();
                 MyAccPage = MyAccloggedOff.Login_WithExistingUser(_email_fromConfig, _Password); //verification
 
                 //Assert here
@@ -56,9 +56,9 @@ namespace UnitTestProject
             {
                 //Works only if you start with fresh unique email(In web.config)
                 CreateAccountPage CreateAccPage = AuthPage.Login_ToCreateAnAccountPage2(_email_fromConfig);
-                MyAccount MyAccPage = CreateAccPage.RegisterNewUser_And_GoToMyAccountPage(_FirstName, _Lastname, _email_fromConfig, _Password, _Day, _Month, _Year, _Company, _Address, _City, _State, _AddInfo, _MobilePhone); //provide your Unregisterd user
+                MyAccountPage MyAccPage = CreateAccPage.RegisterNewUser_And_GoToMyAccountPage(_FirstName, _Lastname, _email_fromConfig, _Password, _Day, _Month, _Year, _Company, _Address, _City, _State, _AddInfo, _MobilePhone); //provide your Unregisterd user
 
-                MyAccountLoggedOff MyAccloggedOff = MyAccPage.LogOff_ToAccLoggedOff();
+                MyAccountLoggedOffPage MyAccloggedOff = MyAccPage.LogOff_ToAccLoggedOff();
                 MyAccPage = MyAccloggedOff.Login_WithExistingUser(_email_fromConfig, _Password); //verification
 
                 //Assert here
