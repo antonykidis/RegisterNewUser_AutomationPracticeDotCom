@@ -51,18 +51,26 @@ namespace UnitTestProject
 
                 //Assert here
                 Assert.IsTrue(MyAccPage.Username.Text.Equals(_FirstName + " " + _Lastname));
+                Assert.AreEqual("http://automationpractice.com/index.php?controller=my-account", _Driver.Url.ToString());
+
             }
             else
             {
-                //Works only if you start with fresh unique email(In web.config)
-                CreateAccountPage CreateAccPage = AuthPage.Login_ToCreateAnAccountPage2(_email_fromConfig);
-                MyAccountPage MyAccPage = CreateAccPage.RegisterNewUser_And_GoToMyAccountPage(_FirstName, _Lastname, _email_fromConfig, _Password, _Day, _Month, _Year, _Company, _Address, _City, _State, _AddInfo, _MobilePhone); //provide your Unregisterd user
-
-                MyAccountLoggedOffPage MyAccloggedOff = MyAccPage.LogOff_ToAccLoggedOff();
-                MyAccPage = MyAccloggedOff.Login_WithExistingUser(_email_fromConfig, _Password); //verification
-
-                //Assert here
-                Assert.IsTrue(MyAccPage.Username.Text.Equals(_FirstName + " " + _Lastname));
+                //if user reaches the account-creation.htm change the flow of the logic
+                if (_Driver.Url == "http://automationpractice.com/index.php?controller=authentication&back=my-account#account-creation")
+                {
+                    CreateAccountPage CreateAccPage = new CreateAccountPage(_Driver);
+                    MyAccountPage MyAccPage = CreateAccPage.RegisterNewUser_And_GoToMyAccountPage(_FirstName, _Lastname, _email_fromConfig, _Password, _Day, _Month, _Year, _Company, _Address, _City, _State, _AddInfo, _MobilePhone); //provide your Unregisterd user
+                    MyAccountLoggedOffPage MyAccloggedOff = MyAccPage.LogOff_ToAccLoggedOff();
+                    MyAccPage = MyAccloggedOff.Login_WithExistingUser(_email_fromConfig, _Password); //verification
+                    //Assert here                                                                               
+                    Assert.IsTrue(MyAccPage.Username.Text.Equals(_FirstName + " " + _Lastname));
+                    Assert.AreEqual("http://automationpractice.com/index.php?controller=my-account", _Driver.Url.ToString());
+                }
+                else
+                {
+                    throw new Exception("account-creation.html does not exists");
+                }
             }
 
         }

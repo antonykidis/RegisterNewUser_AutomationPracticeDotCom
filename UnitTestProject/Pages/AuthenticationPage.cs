@@ -28,13 +28,15 @@ namespace UnitTestProject
             SubmitButton.Click();
             // Pause(_Driver, 4000);
             Thread.Sleep(4000);
-       
-            if (_ErrorMessage.Length > 0)
+
+            if (_Driver.Url == "http://automationpractice.com/index.php?controller=authentication&back=my-account" && ErroMessage.Text.Length > 0)
             {
+                //Error  was shown
                 return null;
             }
             else
             {
+                //No error was shown
                 return new CreateAccountPage(_Driver); //Passing driver to the next page
             }
         }
@@ -47,9 +49,10 @@ namespace UnitTestProject
             Thread.Sleep(4000);
             if (this._Driver.Url.Equals("http://automationpractice.com/index.php?controller=authentication&back=my-account#account-creation"))
             {
+                //Email was generated successfully
                 return new CreateAccountPage(_Driver); //Passing driver to the next page
             }
-            return null;
+            return null; //Email was generated badly!!!!
         }
 
     }
